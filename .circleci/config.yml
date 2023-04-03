@@ -1,0 +1,25 @@
+version: 2.1
+jobs:
+  build:
+    machine:
+      image: windows-server-2022-gui:current
+      resource_class: windows.medium
+      shell: bash
+    steps:
+      - checkout
+      - restore_cache:
+          name: restore file
+          keys:
+            - hello
+      - run: |
+          FILE=~/cache/hello.txt
+          if [ -f "$FILE" ]; then
+              echo "$FILE exists."
+          else 
+              echo "hello wowwaaa" > $FILE
+          fi
+      - save_cache:
+          name: save cache
+          key: hello
+          paths:
+            - ~/cache/hello.txt
