@@ -1,8 +1,11 @@
 version: 2.1
 jobs:
   build:
+    parameters:
+      version:
+        type: string
     machine:
-      image: windows-server-2022-gui:current
+      image: windows-server-2022-gui:<< parameters.version >>
       resource_class: windows.medium
       shell: bash
     steps:
@@ -16,3 +19,12 @@ jobs:
           key: hello
           paths:
             - ~/cache/hello.txt
+
+workflows:
+  win-jobs:
+    jobs:
+      - build:
+          matrix:
+            parameters:
+              version: ["2022.10.1", "2023.03.1"]
+ 
