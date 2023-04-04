@@ -11,13 +11,6 @@ jobs:
           name: restore file
           keys:
             - hello
-      - run: |
-          FILE=~/cache/hello.txt
-          if [ -f "$FILE" ]; then
-              echo "$FILE exists."
-          else 
-              echo "hello wowwaaa" > $FILE
-          fi
       - save_cache:
           name: save cache
           key: hello
