@@ -13,10 +13,10 @@ jobs:
       - restore_cache:
           name: restore file
           keys:
-            - hello
+            - hello-{{ .Environment.CIRCLE_WORKING_DIRECTORY }}
       - save_cache:
           name: save cache
-          key: hello
+          key: hello-{{ .Environment.CIRCLE_WORKING_DIRECTORY }}
           paths:
             - ~/cache/hello.txt
 
