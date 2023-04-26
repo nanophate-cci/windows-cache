@@ -2,8 +2,7 @@ version: 2.1
 jobs:
   build:
     machine:
-      image: windows-server-2019-vs2019-1682477159
-      resource_class: windows.medium
+      image: windows-server-2019-vs2019
       shell: bash
     steps:
       - checkout
