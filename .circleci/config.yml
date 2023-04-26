@@ -1,9 +1,6 @@
 version: 2.1
 jobs:
   build:
-    parameters:
-      version:
-        type: string
     machine:
       image: windows-server-2019-vs2019
       resource_class: windows.medium
