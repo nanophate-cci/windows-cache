@@ -5,7 +5,7 @@ jobs:
       version:
         type: string
     machine:
-      image: windows-server-2022-gui:<< parameters.version >>
+      image: windows-server-2019-vs2019
       resource_class: windows.medium
       shell: bash
     steps:
@@ -23,8 +23,5 @@ jobs:
 workflows:
   win-jobs:
     jobs:
-      - build:
-          matrix:
-            parameters:
-              version: ["2022.10.1", "2023.03.1"]
+      - build
  
