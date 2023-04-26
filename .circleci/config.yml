@@ -3,6 +3,7 @@ jobs:
   build:
     machine:
       image: windows-default
+      resource_class: windows.medium
       shell: bash
     steps:
       - checkout
