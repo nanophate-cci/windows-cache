@@ -5,11 +5,16 @@ jobs:
       version:
         type: string
     machine:
-      image: windows-server-2022-gui:<< parameters.version >>
+      image: windows-server-2019-vs2019:<< parameters.version >>
       resource_class: windows.medium
-      shell: bash
+      shell: powershell.exe
     steps:
       - checkout
+      - run:
+          name: Download WiX  
+          command: |
+            (New-Object Net.WebClient).DownloadFile('https://github.com/wixtoolset/wix3/releases/download/wix3111rtm/wix311.exe', $exePath)
+            cmd /c start /wait "$exePath" /q
       - restore_cache:
           name: restore file
           keys:
@@ -26,5 +31,5 @@ workflows:
       - build:
           matrix:
             parameters:
-              version: ["2022.10.1", "2023.03.1"]
+              version: ["2023.04.1", "2023.08.1"]
  
