@@ -10,6 +10,7 @@ jobs:
       shell: bash
     steps:
       - checkout
+      - run: docker version
       - restore_cache:
           name: restore file
           keys:
