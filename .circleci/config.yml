@@ -1,8 +1,12 @@
+build_agent: << pipeline.parameters.build_agent >>
+
 version: 2.1
 jobs:
   build:
     parameters:
       version:
+        type: string
+      build_agent:
         type: string
     machine:
       image: windows-server-2019-vs2019:<< parameters.version >>
@@ -28,4 +32,6 @@ workflows:
           matrix:
             parameters:
               version: ["2024.07.1", "current"]
+              build_agent: ["1.0.327137-409072d0", "1.0.326836-175b641c"]
+
  
