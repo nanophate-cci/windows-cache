@@ -1,4 +1,4 @@
-build_agent: << pipeline.parameters.build_agent >>
+build_agent: 1.0.327137-409072d0
 
 version: 2.1
 jobs:
