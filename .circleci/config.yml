@@ -8,6 +8,7 @@ jobs:
       image: windows-server-2019-vs2019:<< parameters.version >>
       resource_class: windows.medium
       shell: bash
+    parallelism: 5
     steps:
       - checkout
       - run: docker version
